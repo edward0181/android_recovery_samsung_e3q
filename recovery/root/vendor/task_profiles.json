@@ -1,0 +1,51 @@
+{
+  "Profiles": [
+    {
+      "Name": "GpisSfCpusetEnable",
+      "Actions": [
+        {
+          "Name": "SetAttribute",
+          "Params":
+          {
+            "Name": "GpisSfCpuset",
+            "Value": "2-6"
+          }
+        }
+      ]
+    },
+    {
+      "Name": "GpisSfCpusetDisable",
+      "Actions": [
+        {
+          "Name": "SetAttribute",
+          "Params":
+          {
+            "Name": "GpisSfCpuset",
+            "Value": "0-1,5-6"
+          }
+        }
+      ]
+    },
+    {
+      "Name": "MidgroundProcess",
+      "Actions": [
+        {
+          "Name": "JoinCgroup",
+          "Params":
+          {
+            "Controller": "cpuset",
+            "Path": "midground"
+          }
+        },
+        {
+          "Name": "JoinCgroup",
+          "Params":
+          {
+            "Controller": "cpu",
+            "Path": "midground"
+          }
+        }
+      ]
+    }
+  ]
+}
